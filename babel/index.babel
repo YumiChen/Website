@@ -1,0 +1,302 @@
+const {Component} = React;
+
+// wait for all images to be loaded
+const imgs=[
+  "https://s6.postimg.org/bqh9924xt/p18.jpg",
+"https://s6.postimg.org/6dseuxh1d/p16.jpg",
+"https://s6.postimg.org/hd8k9f14x/愛_.jpg",
+"https://s6.postimg.org/gxxagef7l/satr_vs_the_Xmas.png",
+"https://s6.postimg.org/7skc8smf5/001.jpg",
+"https://s6.postimg.org/rfncc5g1t/GE1.jpg",
+"https://s6.postimg.org/i41af73i9/08.jpg",
+"https://s6.postimg.org/beuqz6i69/013_.jpg" ,
+"https://s6.postimg.org/g69vpkv0h/juan01.jpg"], 
+    navs = ["Top","About","Works","Contact"];
+
+const totalImgNum = imgs.length;
+//let slideChanging = false,
+//    imgWidth;
+
+// action creator
+const changeImg = (event)=>{
+  let img = event.target.getAttribute("data-key");
+  return {
+    type: "CHANGEIMG",
+    payload: img
+  };
+}
+
+const changeToNull = (event)=>{
+  return {
+    type: "CHANGETONULL",
+    payload: null
+  };
+}  
+
+// reducer
+const reducer = (state=null,action)=>{
+  return (action.payload === null || action.payload)?action.payload:state;
+}
+
+// root reducer
+const rootReducer = Redux.combineReducers({
+  img: reducer
+});
+
+// Components & containers
+class Nav extends Component{
+  constructor(props){
+    super(props);
+    this.scrollToElement = this.scrollToElement.bind(this);
+  }
+  showNav(event){
+    let nav = document.querySelector(".nav"),
+    page = document.querySelector(".page");
+  nav.classList.remove("showNav");
+   page.style.filter="blur(0px)";
+  }
+  scrollToElement(event){
+    const name = event.target.innerHTML.toLowerCase();
+ (document.querySelector('.'+name)).scrollIntoView({ 
+    behavior: 'smooth' 
+      });
+    
+    const nav = document.querySelector(".nav"),
+    page = document.querySelector(".page"); page.style.filter="blur(0px)";
+    nav.classList.remove("showNav");
+  }
+  render(){
+    let nav = navs.map((nav)=>{
+      return (
+        <div className="navItem" onClick={this.scrollToElement}>
+          {nav}
+        </div>);
+      }
+    );
+    return(
+        <div className="nav">
+        <i className="fa fa-times" aria-hidden="true" onClick={this.showNav}></i>
+        {nav}
+        </div>
+    );
+  }
+}
+
+let styles = imgs.map((img)=>{
+  return {
+    backgroundImage:'url('+img+')'
+  };
+});
+
+class NavBtn extends Component{
+  constructor(props){
+    super(props);
+  }
+    showNav(event){
+    let nav = document.querySelector(".nav"),
+    page = document.querySelector(".page");
+ page.style.filter="blur(2px)";
+      nav.classList.add("showNav");
+  }
+  render(){
+    return (<div className="navbtn">
+        <i className="fa fa-bars " aria-hidden="true" onClick={this.showNav}></i></div>);
+  }
+}
+
+class TopSlider extends Component {
+  constructor(props){
+    super(props);
+  }
+  componentWillmount(){
+ window.removeEventListener("resize",
+    debounce(()=>{this.forceUpdate();},1000)
+    );
+  }
+  componentDidMount(){
+ window.addEventListener("resize",
+    debounce(()=>{this.forceUpdate();},1000)
+    );
+  }
+  render() {
+    let settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    return (
+      <div className="top">
+        <h1>Azure <br/>Seasons</h1>
+      <Slider {...settings} className=" sliderBox">
+      <div className="img" style={styles[0]}/>
+        <div className="img" style={styles[1]}/>
+        </Slider>
+    </div>
+    );
+  }
+}
+
+const About = (props)=>{
+  return(
+    <div className="about">
+      <div className="avatar"/>
+      <div className="info">
+      <h3>Yumi Chen</h3>
+      <p>Developer who's learning React.</p>
+      </div>
+    </div>
+  );
+}
+
+
+let Works = (props)=>{
+  let works = imgs.map((img,index)=>{
+    return (<div
+      className="piece"
+      style={styles[index]}
+      onClick={props.changeImg}
+      data-key = {index}
+      />);
+    }
+  );
+  return(
+    <div className="works">
+      <p>Illustrations</p>
+      {works}
+    </div>
+  );
+}
+
+const mapDispatchToProps_works = (dispatch)=>{
+  return Redux.bindActionCreators({changeImg:changeImg},dispatch);
+}
+
+Works = ReactRedux.connect(null,mapDispatchToProps_works)(Works);
+
+const Contact = (props)=>{
+  return(
+    <div className="contact">
+      <p>Contact</p>
+     <form>
+       <div className="contactItem">
+       <label>Name</label>
+       <input type = "text"/>
+      </div> 
+       <div className="contactItem">
+      <label>Email</label>
+       <input type = "text"/>
+      </div> 
+      <div className="contactItem">
+       <label>Message</label>
+       <textArea/>
+        </div>
+       <input type="submit" id="submit" value="SEND"/>
+     </form>
+    </div>
+  );
+}
+
+class ImgBox extends Component{
+  constructor(props){
+    super(props);
+  }
+  componentWillmount(){
+ window.removeEventListener("resize",
+    debounce(()=>{this.forceUpdate();},1000)
+    );
+  }
+  componentDidMount(){
+ window.addEventListener("resize",
+    debounce(()=>{this.forceUpdate();},1000)
+    );
+  }
+  render(){
+    const img = this.props.img;
+    let works = imgs.map((img,index)=>{
+    return (<div><img
+      src = {img}
+      data-key = {index}
+      /></div>);
+    }
+  );
+    let settings = {
+      dots: false,
+      infinite: false,
+      speed: 500,
+      initialSlide: img,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    
+    return (img?
+        <div 
+          className="imgBox"
+        >
+        <i className = "fa fa-times closeImgBox"
+          onClick = {this.props.changeToNull}/>
+        <Slider {...settings}>
+        {works}
+        </Slider>
+            </div>
+      :null);
+  }
+}
+
+const mapStateToProps=(state)=>{
+  return {img: state.img};
+}
+
+const mapDispatchToProps_imgbox = (dispatch)=>{
+  return Redux.bindActionCreators({changeToNull:changeToNull},dispatch);
+}
+
+ImgBox = ReactRedux.connect(mapStateToProps,mapDispatchToProps_imgbox)(ImgBox);
+
+
+// rendering component
+const Provider = ReactRedux.Provider,
+      store = Redux.createStore(rootReducer);
+
+class Page extends Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <Provider store={store}>
+        <div>
+        <ImgBox/>
+        <NavBtn/>
+        <Nav/>
+        <div className="page">
+        <TopSlider/>
+        <About/>
+        <Works/>
+        <Contact/>
+        <footer>Copyright © 2017 Azure Seasons</footer>
+        </div>
+      </div>
+    </Provider>
+  );
+  }
+}
+
+ReactDOM.render(<Page/>,document.body);
+
+// TODO
+
+
+// tool function
+function debounce(func, wait, immediate) {
+var timeout;
+return function() {
+var context = this, args = arguments;
+var later = function() {timeout = null;if (!immediate) func.apply(context, args);};
+var callNow = immediate && !timeout;
+clearTimeout(timeout);
+timeout = setTimeout(later, wait);
+if (callNow) func.apply(context, args);
+  };
+};
