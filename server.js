@@ -15,8 +15,8 @@ var webpackHotMiddleware = require("webpack-hot-middleware");
 
 // App setup
 var app = express();
-var server = app.listen(process.env.port || 5000, function(){
-    console.log('listening for requests on port 5000,');
+var server = app.listen((process.env.port || 3000), function(){
+    console.log('listening for requests on port 3000,');
 });
 
 // set hot-reload

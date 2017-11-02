@@ -2,7 +2,7 @@ import reducer from "./reducer";
 import {combineReducers} from "redux";
 
 const rootReducer = combineReducers({
-    lang: reducer
+    img: reducer
   });
 
 module.exports = rootReducer;

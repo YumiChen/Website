@@ -1,6 +1,6 @@
+import Page from "./components/Page";
 import {render} from "react-dom";
-import App from "./components/App";
 
 require("./assets/stylesheets/style.sass");
 
-render(<App/>,document.getElementById("container"));
+render(<Page/>,document.body);

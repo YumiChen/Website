@@ -1,53 +1,49 @@
 import {Component} from "react";
+import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import Work from "../components/Work";
-import debounce from "../functions/debounce";
-import Slider from "react-slick";
+import changeImg from "../actions/changeImg";
 
-import {demoUrls, githubUrls, content_EN, content_CH, links} from "../assets/data/data";
-
-class Works_ extends React.Component{
-    constructor(props){
-      super(props);
-    }
-    componentWillmount(){
-   window.removeEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
-      );
-    }
-    componentDidMount(){
-   window.addEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
-      );
-    }
-    render(){
-      let content = (this.props.lang=="EN")? content_EN:content_CH;
-      
-      let works=[];
-      for(var i =0;i<content.length;i++){
-        works.push(<div key={i}><Work content={content[i]} demoUrls={demoUrls[i]} githubUrls={githubUrls[i]} data-index={i} key={i}/></div>);
-      }
-      let settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
+const imgs=[
+    "https://s6.postimg.org/bqh9924xt/p18.jpg",
+  "https://s6.postimg.org/6dseuxh1d/p16.jpg",
+  "https://s6.postimg.org/hd8k9f14x/愛_.jpg",
+  "https://s6.postimg.org/gxxagef7l/satr_vs_the_Xmas.png",
+  "https://s6.postimg.org/7skc8smf5/001.jpg",
+  "https://s6.postimg.org/rfncc5g1t/GE1.jpg",
+  "https://s6.postimg.org/i41af73i9/08.jpg",
+  "https://s6.postimg.org/beuqz6i69/013_.jpg" ,
+  "https://s6.postimg.org/g69vpkv0h/juan01.jpg"], 
+      navs = ["Top","About","Works","Contact"];
   
-      return (
-        <div className="works">
-          <p>WORKS</p>
-          <Slider {...settings}>
-          {works}
-            </Slider>
-        </div>);
-    }
-  }
-  
-  const mapStateToProps_works=(state)=>{
-    return {lang: state.lang};
-  }
-  const Works = connect(mapStateToProps_works)(Works_);
+  const totalImgNum = imgs.length;
+  let styles = imgs.map((img)=>{
+    return {
+      backgroundImage:'url('+img+')'
+    };
+  });
 
-  module.exports = Works;
+  let Works = (props)=>{
+     let works = imgs.map((img,index)=>{
+       return (<div
+         className="piece"
+         style={styles[index]}
+         onClick={props.changeImg}
+         data-key = {index}
+         />);
+       }
+     );
+     return(
+       <div className="works">
+         <p>Illustrations</p>
+         {works}
+       </div>
+     );
+   }
+   
+   const mapDispatchToProps_works = (dispatch)=>{
+     return bindActionCreators({changeImg:changeImg},dispatch);
+   }
+   
+   Works = connect(null,mapDispatchToProps_works)(Works);
+
+   module.exports = Works;
