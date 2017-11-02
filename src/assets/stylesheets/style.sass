@@ -17,7 +17,9 @@ $breakpoints: ("phone":400px,"phone-wide":480px,"phablet":560px,"tablet-small": 
       $width: $width - 1px
     @media only screen and (#{$type}-width: $width)
       @content
-  
+
+@import "./loadingAnimation"  
+
 *
   // border: solid 1px
   position: relative

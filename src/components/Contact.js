@@ -1,32 +1,54 @@
 import {Component} from "react";
+import LoadingAnimation from "./LoadingAnimation";
 
-const Contact = (props)=>{
+class Contact extends Component{
+  constructor(props){
+    super(props);
+    this.state = {loading: false};
+  }
+  onSubmit(event){
+    event.preventDefault();
+    const title = document.getElementById("title").value,
+          name = document.getElementById("name").value,
+          email = document.getElementById("email").value,
+          msg = document.getElementById("msg").value,
+      api = "https://portfolio-email-server.herokuapp.com/email?title="+encodeURIComponent(title)+"&name="+name+encodeURIComponent(name)+"&email="+encodeURIComponent(email)+"&msg="+encodeURIComponent(msg);
+    
+    if(title === "" || name === "" || email === "" || msg === ""){
+      sweetAlert(
+        'Oops...',
+        'There are still empty fields!',
+        'error'
+      );
+      return;
+    }
+    
+    this.setState({loading: true});
+    fetch(api,{
+      method: "POST"
+    }).then((data)=>{
+      this.setState({loading: false});
+      sweetAlert(
+        'Success!',
+        'Email is sent',
+        'success'
+      )
+    }).catch((err)=>{
+      this.setState({loading: false});
+      sweetAlert(
+        'Oops...',
+        'Something went wrong!',
+        'error'
+      )
+    });
+  }
+  render(){
+    this.onSubmit = this.onSubmit.bind(this);
     return(
       <div className="contact">
+        {this.state.loading?<LoadingAnimation/>:null}
         <p>Contact</p>
-       <form onSubmit={(event)=>{
-          event.preventDefault();
-          const title = document.getElementById("title").value,
-                name = document.getElementById("name").value,
-                email = document.getElementById("email").value,
-                msg = document.getElementById("msg").value,
-            api = "https://portfolio-email-server.herokuapp.com/email?title="+encodeURIComponent(title)+"&name="+name+encodeURIComponent(name)+"&email="+encodeURIComponent(email)+"&msg="+encodeURIComponent(msg);
-          fetch(api,{
-            method: "POST"
-          }).then((data)=>{
-            sweetAlert(
-              'Success!',
-              'The email is sent',
-              'success'
-            )
-          }).catch((err)=>{
-            sweetAlert(
-              'Oops...',
-              'Something went wrong!',
-              'error'
-            )
-          });
-        }}>
+       <form onSubmit={this.onSubmit}>
          <div className="contactItem">
          <label>Title</label>
          <input type = "text" id="title"/>
@@ -48,5 +70,5 @@ const Contact = (props)=>{
       </div>
     );
   }
-
+}
   module.exports = Contact;
