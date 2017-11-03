@@ -1,5 +1,6 @@
 import {Component} from "react";
 import LoadingAnimation from "./LoadingAnimation";
+import Waypoint from "react-waypoint";
 
 class Contact extends Component{
   constructor(props){
@@ -43,13 +44,24 @@ class Contact extends Component{
       )
     });
   }
+  underline(){
+    console.log("waypoint enter");
+  }
+  deunderline(){
+    console.log("waypoint leave");
+  }
   render(){
     this.onSubmit = this.onSubmit.bind(this);
     return(
       <div className="contact">
         {this.state.loading?<LoadingAnimation/>:null}
+        <Waypoint 
+          onEnter={this.underline}
+          onLeave={this.deunderline}
+        >
         <p>Contact</p>
-       <form onSubmit={this.onSubmit}>
+        </Waypoint>
+        <form onSubmit={this.onSubmit}>
          <div className="contactItem">
          <label>Title</label>
          <input type = "text" id="title"/>
