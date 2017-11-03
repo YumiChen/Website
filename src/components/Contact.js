@@ -25,7 +25,8 @@ class Contact extends Component{
     
     this.setState({loading: true});
     fetch(api,{
-      method: "POST"
+      method: "POST",
+      mode: "no-cors"
     }).then((data)=>{
       this.setState({loading: false});
       sweetAlert(
@@ -59,7 +60,7 @@ class Contact extends Component{
         </div> 
          <div className="contactItem">
         <label>Email</label>
-         <input type = "text" id="email"/>
+         <input type = "email" id="email"/>
         </div> 
         <div className="contactItem">
          <label>Message</label>

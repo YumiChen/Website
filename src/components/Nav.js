@@ -24,9 +24,9 @@ class Nav extends Component{
       nav.classList.remove("showNav");
     }
     render(){
-      let nav = navs.map((nav)=>{
+      let nav = navs.map((nav,index)=>{
         return (
-          <div className="navItem" onClick={this.scrollToElement}>
+          <div className="navItem" onClick={this.scrollToElement} key={index}>
             {nav}
           </div>);
         }

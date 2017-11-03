@@ -29,6 +29,7 @@ const imgs=[
          style={styles[index]}
          onClick={props.changeImg}
          data-key = {index}
+         key = {index}
          />);
        }
      );

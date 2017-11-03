@@ -1,0 +1,16 @@
+.underlined::after
+  content : ""
+  position: absolute
+  left    : 50%
+  bottom  : 0
+  height  : 1px
+  transform: translateX(-50%)
+  border-bottom: solid 3.5px #ccb847
+  animation: underlined 1s 1 forwards
+  transition-duration: 2s
+  
+@keyframes underlined
+  0%
+    width: 0
+  100%
+    width: 100%

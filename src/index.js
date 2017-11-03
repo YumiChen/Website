@@ -3,4 +3,4 @@ import {render} from "react-dom";
 
 require("./assets/stylesheets/style.sass");
 
-render(<Page/>,document.body);
+render(<Page/>,document.getElementById("container"));

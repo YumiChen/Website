@@ -29,12 +29,12 @@ class TopSlider extends Component {
     }
     componentWillmount(){
    window.removeEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
+      debounce(()=>{this.forceUpdate();},500)
       );
     }
     componentDidMount(){
    window.addEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
+      debounce(()=>{this.forceUpdate();},500)
       );
     }
     render() {

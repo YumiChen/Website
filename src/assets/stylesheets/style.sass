@@ -6,7 +6,10 @@ $lightBlue: #14b1ce
 
 %title
   text-align: center
-  font-size: 1.2em
+  font-size: 1.3em
+
+%shadow
+  box-shadow: 0 0 13px 3px rgba(39, 91, 109,.3)
 
 $breakpoints: ("phone":400px,"phone-wide":480px,"phablet":560px,"tablet-small": 640px,"tablet":768px,"tablet-wide":1024px,"desktop":1248px,"desktop-wide": 1440px)
 
@@ -19,6 +22,7 @@ $breakpoints: ("phone":400px,"phone-wide":480px,"phablet":560px,"tablet-small": 
       @content
 
 @import "./loadingAnimation"  
+@import "./underlined" 
 
 *
   // border: solid 1px
@@ -33,6 +37,7 @@ $breakpoints: ("phone":400px,"phone-wide":480px,"phablet":560px,"tablet-small": 
 
 html,body
   margin: 0
+  width: 100vw
   height: 100vh
   overflow-x: hidden
   // background-color: rgb(89, 235, 249)
@@ -98,11 +103,12 @@ html
 .about
   width: 100%
   background-color: $lightBlue
-  padding: 5vw 0
+  padding: 3.5% 0
+  @extend %shadow
   & .avatar
     display: inline-block
-    width: 20vw
-    height: 20vw
+    width: 10em
+    height: 10em
     background-image: url(https://s6.postimg.org/iaqdzh37l/avatar.jpg)
     background-size: cover
     background-repeat: no-repeat
@@ -191,7 +197,7 @@ html
     @extend %title
   & form
     width: 37%
-    min-width: 300px
+    min-width: 400px
     margin: 5% auto 10% auto
     border: solid 1px
     padding: 0.7em
@@ -234,6 +240,7 @@ html
       &:hover
         background-color: $lightBlue
 footer
+  @extend %shadow
   text-align: center
   padding: 1em
   background-color: $lightBlue
@@ -331,6 +338,16 @@ footer
     top: 50%
     transform: translate(-50%,-50%)
     
++mq('desktop',min)
+  .works
+    padding: 0 8em
+    .piece
+      width: 32%
+      margin: .3em 0
+      height: 9em
+  .contact
+    form
+      max-width: 300px
 +mq('phone-wide',max)
   body
     height: 100%
@@ -371,6 +388,7 @@ footer
     & form
       width: 85vw
       margin: 5% auto 20% auto
+      min-width: 300px
   .showNav
     width: 100vw
   .imgBox
