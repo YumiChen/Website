@@ -15,7 +15,7 @@ var webpackHotMiddleware = require("webpack-hot-middleware");
 
 // App setup
 var app = express();
-var server = app.listen((process.env.port || 3000), function(){
+var server = app.listen((process.env.port || 2000), function(){
     console.log('listening for requests on port 3000,');
 });
 

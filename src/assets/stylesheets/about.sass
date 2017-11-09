@@ -1,0 +1,41 @@
+.about
+  width: 100%
+  background-color: $lightBlue
+  padding: 3.5% 0
+  @extend %shadow
+  & .avatar
+    display: inline-block
+    width: 10em
+    height: 10em
+    background-image: url(https://s6.postimg.org/iaqdzh37l/avatar.jpg)
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: 50% 50%
+    border-radius: 10em
+    border: solid 3px white
+    margin-left: 4vw
+  & .info
+    display: inline-block
+    vertical-align: top
+    margin-left: 2.5em
+    color: white
+    & h3
+      font-family: Lobster
+      margin: 0
+      font-size: 1.5em
+    & p
+      margin: 0.5em
+
++mq('phone-wide',max)
+  .about
+    padding: 3em 0
+    & .avatar
+      margin: 0
+      left: 50%
+      transform: translateX(-50%)
+      width: 40vw
+      height: 40vw
+    & .info
+      width: 100%
+      margin: 0
+      text-align: center

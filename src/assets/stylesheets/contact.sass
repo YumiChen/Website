@@ -1,0 +1,65 @@
+.contact
+  width: 100%
+  & p
+    @extend %title
+  & form
+    width: 37%
+    min-width: 400px
+    margin: 5% auto 10% auto
+    border: solid 1px
+    padding: 0.7em
+    background-color: white
+    box-sizing: borderBox
+    &::before
+      content: ""
+      position: absolute
+      background: repeating-linear-gradient(45deg,$blue,$blue 10px,$white 10px,$white 20px,$red 20px,$red 30px,$white 30px, white 40px)
+      width: 105%
+      height: 104%
+      top: -2.5%
+      left: -2.5%
+      border: solid 1px 
+      z-index: -1
+    & .contactItem
+      width: 100%
+      & label
+        display: block
+        width: 100%
+        margin: 3% 0
+      & input
+        width: 100%
+    & .contactItem:nth-child(4)
+      width: 100%
+      height: 50%
+      & textArea
+        width: 100%
+        height: 7em
+        margin-bottom: .4em
+    & input[type="submit"]
+      left: 50%
+      transform: translateX(-50%)
+      background-color: $blue
+      border-radius: 0.5em
+      color: white
+      cursor: pointer
+      border: none
+      padding: 0.3em 0.8em
+      &:hover
+        background-color: $lightBlue
+footer
+  @extend %shadow
+  text-align: center
+  padding: 1em
+  background-color: $lightBlue
+  color: white
+
++mq('desktop',min)
+  .contact
+    form
+      max-width: 300px
++mq('phone-wide',max)
+  .contact
+    & form
+      width: 85vw
+      margin: 5% auto 20% auto
+      min-width: 300px

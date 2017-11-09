@@ -1,0 +1,71 @@
+.nav
+  width: 0px
+  background-color: $translucentBlue
+  z-index: 6
+  overflow: hidden   
+  height: 100vh
+  position: fixed
+  height: 100vh
+  padding-top: 2em
+  & i
+    position: absolute
+    top: 0
+    color: #fff
+    font-size: 2em
+    right: 0
+    margin: .5em
+    cursor: pointer
+    &:hover
+      color: $yellow
+  & .navItem
+    width: 60%
+    margin: 3vw
+    color: white
+    cursor: pointer
+    transition: all .5s
+    font-size: 1.5em
+    &:hover
+      color: $yellow
+      &::after
+        content: ""
+        animation: underline .5s 1 linear forwards
+        height: 0
+        position: absolute
+        top: 1.4em
+        left: 0
+        border: solid 2px
+@keyframes underline
+  0%
+    width: 0
+  100%
+    width: 10vw
+      
+.wideNavContainer
+  position: fixed
+  .wideNavItem
+
+.showNav
+  width: 40vw
+  
+.navbtn
+  position: fixed
+  top: 0
+  height: 12vw
+  margin: .3em
+  color: rgba(255,255,255,1)
+  font-size: 2em
+  z-index: 3
+  cursor: pointer
+  & i
+    &:hover
+      color: $yellow
+.navScrolled
+  color: $blue
+
++mq('phone-wide',max)
+  .nav
+    & .navItem
+      margin: 5vw
++mq('phone-wide',max)
+  .showNav
+    width: 100vw

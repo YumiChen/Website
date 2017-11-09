@@ -1,0 +1,53 @@
+.imgBox
+  position: fixed
+  width: 100vw
+  height: 100vh
+  z-index: 7
+  background-color: rgba(0,0,0,.8)
+  & .slick-slider
+    transition: all .5s
+    left: 50%
+    transform: translateX(-50%)
+    width: 100vw
+    height: 90vh
+    & .slick-list, .slick-track
+      width: 100vw
+      height: 90vh
+    .slick-prev
+      position: absolute   
+      z-index: 5
+      transform: translateX(7vw) scale(1.7,1.7)
+      &::before
+        content: "《"
+    .slick-next
+      position: absolute
+      z-index: 5
+      transform: translateX(-7vw) scale(1.7,1.7)
+      &::before
+        content: "》"
+  & .closeImgBox
+    z-index: 8
+    color: white
+    position: absolute
+    right: 0
+    margin: .5em
+    margin-right: 1em
+    font-size: 1.5em
+    cursor: pointer
+    &:hover
+      color: $yellow
+  & img
+    height: 85%
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
+
++mq('phone-wide',max)
+  .imgBox
+    & img
+      height: unset
+      width: 90vw
+    & .slick-slider
+      & .slick-prev, .slick-next
+        opacity: 0

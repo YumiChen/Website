@@ -1,0 +1,51 @@
+.top
+  & .sliderBox
+    height: 100vh
+    overflow: hidden
+    & .slick-list
+      height: 100%
+      width: 100vw
+      & .slick-track
+        height: 100%
+        width: 100vw
+        & .img
+          width: 100vw
+          height: 100%
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: 50% 40%
+        // background-attachment: fixed
+    & .slick-prev
+      position: absolute
+      z-index: 5
+      transform: translateX(7vw)
+    & .slick-next
+      position: absolute
+      z-index: 5
+      transform: translateX(-7vw)
+  & h1
+    position: absolute
+    z-index: 2
+    font-size: 7em
+    // color: rgba(255,255,255,.8)
+    color: white
+    margin: 0
+    right: 2vw
+    bottom: 2vw
+    font-family: Lora
+    text-align: right
+    line-height: 0.9em
+    mix-blend-mode: overlay
+
++mq('phone-wide',max)
+  .top
+    height: 91vh
+    & .sliderBox
+      & .slick-list
+        & .slick-track
+          & .img:nth-child(2), .slick-slide:nth-child(4)
+            background-position: 35% 40%
++mq('phone-wide',max)
+  .top
+    & h1
+      font-size: 4em
