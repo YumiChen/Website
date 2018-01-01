@@ -29,7 +29,7 @@ class Nav extends Component{
         this.speedX = Math.random() * 2;
         this.accX = Math.random() * -0.3;
         this.r = Math.random() * 8 + 2;
-        this.opa = Math.random() - 0.1;
+        this.opa = Math.random() - 0.2;
       }
       Bubble.prototype.float = function(){
         this.y -= this.speedY;
@@ -45,11 +45,12 @@ class Nav extends Component{
       for(let i=0;i<20;i++){
         bubbles.push(new Bubble());
       }
-      
+      ctx.strokeStyle = "rgba(255,255,255,0.5)";
+      ctx.lineWidth = 3;
       function draw(){
         if(canvas.style.display !="none"){
           ctx.clearRect(0,0,width,height);
-          ctx.strokeStyle = "rgba(255,255,255,0.7)";
+          
           bubbles.forEach(function(bubble){ 
             ctx.fillStyle = "rgba(255,255,255,"+bubble.opa+")";
             bubble.float();
@@ -69,6 +70,8 @@ class Nav extends Component{
           height=window.innerHeight;
           canvas.width=width;
           canvas.height=height;
+          ctx.strokeStyle = "rgba(255,255,255,0.5)";
+          ctx.lineWidth = 3;
       }
       
       window.addEventListener('resize',resize);
