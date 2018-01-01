@@ -5,7 +5,6 @@ const path = require('path');
 module.exports = [{
   entry: [
     'eventsource-polyfill',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
     './src/index'],
   output: {
     path: path.join(__dirname, '/public'),
@@ -13,29 +12,38 @@ module.exports = [{
     filename: 'bundle.js'
   },
   module: {
-    // exclude: /node_modules/,
     loaders: [
       { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.sass$/, loader: 'style-loader!css-loader!sass-loader', exclude: /node_modules/ },
     ]
-    // query: {
-    //   presets: ["react", "es2015", "stage-1"]
-    // }
   },
   resolve: {
     extensions: ['.js','.sass', ".jsx"]
   }
-  ,devServer: {
-  contentBase: './public',
-  hot: true
-}
+  ,
+  devServer: {
+    port: process.env.PORT || 8000,
+    host: "localhost",
+    contentBase: "./public",
+    historyApiFallback: true,
+    hot: true,
+    inline: true
+  }
   ,plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new webpack.ProvidePlugin({
       React: 'react',
       ReactDOM:'react-dom'
     }),
-    new webpack.NoErrorsPlugin()
-    // new webpack.NoEmitOnErrorsPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(), //dedupe similar code 
+    new webpack.optimize.UglifyJsPlugin(), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
   ]
 }];

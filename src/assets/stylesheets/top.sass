@@ -14,7 +14,7 @@
           background-size: cover
           background-repeat: no-repeat
           background-position: 50% 40%
-        // background-attachment: fixed
+          // filter: brightness(80%)
     & .slick-prev
       position: absolute
       z-index: 5
@@ -26,26 +26,28 @@
   & h1
     position: absolute
     z-index: 2
-    font-size: 7em
-    // color: rgba(255,255,255,.8)
-    color: white
+    font-size: 5em
+    color: rgba(255,255,255,0.95)
     margin: 0
     right: 2vw
     bottom: 2vw
-    font-family: Lora
     text-align: right
     line-height: 0.9em
-    mix-blend-mode: overlay
+    & span
+      font-family: Lora
+      text-shadow: 4px 4px rgba(249, 102, 198,.5), -4px -4px rgba(89, 172, 255,.5)
 
++mq('desktop',min)
+  .top
+    & h1
+      font-size: 7em
 +mq('phone-wide',max)
   .top
     height: 91vh
+    & h1
+      font-size: 3.5em
     & .sliderBox
       & .slick-list
         & .slick-track
           & .img:nth-child(2), .slick-slide:nth-child(4)
             background-position: 35% 40%
-+mq('phone-wide',max)
-  .top
-    & h1
-      font-size: 4em

@@ -21,17 +21,17 @@ render(){
 return (
 <Provider store={store}>
   <div>
-  <ImgBox/>
-  <NavBtn/>
-  <Nav/>
-  <div className="page">
-  <TopSlider/>
-  <About/>
-  <Works/>
-  <Contact/>
-  <footer>Copyright © 2017 Azure Seasons</footer>
+    <ImgBox/>
+    <NavBtn/>
+    <Nav/>
+    <div className="page">
+      <TopSlider/>
+      <About/>
+      <Works/>
+      <Contact/>
+      <footer>Copyright © 2017 Azure Seasons</footer>
+    </div>
   </div>
-</div>
 </Provider>
 );
 }

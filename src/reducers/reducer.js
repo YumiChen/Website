@@ -1,5 +1,7 @@
 const reducer = (state=null,action)=>{
-    return (action.payload === null || action.payload)?action.payload:state;
+    if(action.type == "CHANGEIMG" || action.type == "CHANGETONULL"){
+      return action.payload;
+    }else return state;
   }
 
 module.exports = reducer;

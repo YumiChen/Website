@@ -34,7 +34,7 @@ class ImgBox extends Component{
     render(){
       const img = this.props.img;
       let works = imgs.map((img,index)=>{
-      return (<div><img
+      return (<div key={index}><img
         src = {img}
         data-key = {index}
         /></div>);
@@ -53,6 +53,7 @@ class ImgBox extends Component{
           <div 
             className="imgBox"
           >
+          <div className="bg" onClick={this.props.changeToNull}/>
           <i className = "fa fa-times closeImgBox"
             onClick = {this.props.changeToNull}/>
           <Slider {...settings}>

@@ -3,26 +3,35 @@
   width: 100vw
   height: 100vh
   z-index: 7
-  background-color: rgba(0,0,0,.8)
+  animation: emerge 1s 1 both
+  & .bg
+    position: absolute
+    width: 100vw
+    height: 100vh
+    cursor: pointer
+    background-color: rgba(0,0,0,.8)
   & .slick-slider
     transition: all .5s
     left: 50%
-    transform: translateX(-50%)
-    width: 100vw
-    height: 90vh
+    top: 50%
+    transform: translate(-50%,-50%)
+    width: 80%
+    height: 80vh
     & .slick-list, .slick-track
-      width: 100vw
-      height: 90vh
+      width: 100%
+      height: 100%
+    & .slick-slide
+      width: 100%
     .slick-prev
       position: absolute   
       z-index: 5
-      transform: translateX(7vw) scale(1.7,1.7)
+      transform: translateX(-5px) scale(1.7,1.7)
       &::before
         content: "《"
     .slick-next
       position: absolute
       z-index: 5
-      transform: translateX(-7vw) scale(1.7,1.7)
+      transform: translateX(5px) scale(1.7,1.7)
       &::before
         content: "》"
   & .closeImgBox
@@ -37,17 +46,22 @@
     &:hover
       color: $yellow
   & img
-    height: 85%
+    margin: 0 auto
+    max-height: 90%
+    max-width: 85%
     position: absolute
     left: 50%
     top: 50%
     transform: translate(-50%,-50%)
 
+@keyframes emerge
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
 +mq('phone-wide',max)
   .imgBox
-    & img
-      height: unset
-      width: 90vw
     & .slick-slider
+      height: 50vh
       & .slick-prev, .slick-next
-        opacity: 0

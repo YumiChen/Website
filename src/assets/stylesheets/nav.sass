@@ -60,12 +60,19 @@
     &:hover
       color: $yellow
 .navScrolled
-  color: $blue
+  color: $darkYellow
 
++mq('desktop',min)
+  .showNav
+    width: 30vw
 +mq('phone-wide',max)
   .nav
     & .navItem
       margin: 5vw
-+mq('phone-wide',max)
   .showNav
     width: 100vw
+  @keyframes underline
+    0%
+      width: 0
+    100%
+      width: 50%

@@ -2,10 +2,10 @@
   content : ""
   position: absolute
   left    : 50%
-  bottom  : 0
+  bottom  : -5px
   height  : 1px
   transform: translateX(-50%)
-  border-bottom: solid 3.5px #ccb847
+  border-bottom: solid 5px $darkYellow
   animation: underlined 1s 1 forwards
   transition-duration: 2s
   
@@ -13,4 +13,17 @@
   0%
     width: 0
   100%
-    width: 100%
+    width: 50%
+
++mq('desktop',min)
+  @keyframes underlined
+    0%
+      width: 0
+    100%
+      width: 25%
++mq('phone-wide',max)
+  @keyframes underlined
+    0%
+      width: 0
+    100%
+      width: 70%

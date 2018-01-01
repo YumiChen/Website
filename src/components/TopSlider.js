@@ -1,6 +1,7 @@
 import {Component} from "react";
 import debounce from "../functions/debounce";
 import Slider from "react-slick";
+import ScrollContainer from "./ScrollContainer";
 
 const imgs=[
   "https://s6.postimg.org/bqh9924xt/p18.jpg",
@@ -26,6 +27,9 @@ let styles = imgs.map((img)=>{
 class TopSlider extends Component {
     constructor(props){
       super(props);
+      this.state = {
+        height: window.innerHeight
+      }
     }
     componentWillmount(){
    window.removeEventListener("resize",
@@ -46,8 +50,10 @@ class TopSlider extends Component {
         slidesToScroll: 1
       };
       return (
-        <div className="top">
-          <h1>Azure <br/>Seasons</h1>
+        <div className="top" style={false?{height: this.state.height}:null}>
+          <h1>
+            <ScrollContainer comp={<span>Azure <br/>Seasons</span>}/>
+          </h1>
         <Slider {...settings} className=" sliderBox">
         <div className="img" style={styles[0]}/>
           <div className="img" style={styles[1]}/>
