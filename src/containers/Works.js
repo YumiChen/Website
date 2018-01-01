@@ -35,7 +35,7 @@ const imgs=[
           onClick={props.changeImg}
           data-key = {index}
           />
-        } cls="float"/>
+        } cls={"float"+(index%3)}/>
       );
        }
      );

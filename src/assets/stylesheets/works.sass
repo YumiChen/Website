@@ -22,8 +22,12 @@
         background-size: 110%
         background-position: 50% 50%
 
-.float
+.float0
   animation: float 1s 1 both
+.float1
+  animation: float 1s .2s 1 both
+.float2
+  animation: float 1s .5s 1 both
 
 @keyframes float
   0%
@@ -48,3 +52,7 @@
         &:hover
           background-size: 110%
           background-position: 50% 35%
+  .float1
+    animation: float 1s 1 both
+  .float2
+    animation: float 1s 1 both
