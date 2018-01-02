@@ -1,4 +1,6 @@
 .top
+  width: 100vw
+  height: 100vh
   & .sliderBox
     height: 100vh
     overflow: hidden
@@ -14,7 +16,6 @@
           background-size: cover
           background-repeat: no-repeat
           background-position: 50% 40%
-          // filter: brightness(80%)
     & .slick-prev
       position: absolute
       z-index: 5
@@ -37,6 +38,15 @@
       font-family: Lora
       text-shadow: 4px 4px rgba(249, 102, 198,.5), -4px -4px rgba(89, 172, 255,.5)
 
+.topImg
+  position: fixed
+  width: 100vw
+  height: 100vh
+  background-image: url(https://s6.postimg.org/bqh9924xt/p18.jpg)
+  background-size: cover
+  background-position: 50% 50%
+  z-index: -2
+
 +mq('desktop',min)
   .top
     & h1
@@ -44,6 +54,8 @@
 +mq('phone-wide',max)
   .top
     height: 91vh
+    & .topImg
+      background-position: 35% 40%
     & h1
       font-size: 3.5em
     & .sliderBox

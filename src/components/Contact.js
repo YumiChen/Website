@@ -55,6 +55,7 @@ class Contact extends Component{
     return(
       <div className="contact">
         {this.state.loading?<LoadingAnimation/>:null}
+        <div className="bg"/>
         <ScrollContainer comp={<p>Contact</p>} cls="underlined"/>
         <ScrollContainer comp={
             <form onSubmit={this.onSubmit}>
