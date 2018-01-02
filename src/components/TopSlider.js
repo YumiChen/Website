@@ -36,7 +36,8 @@ class TopSlider extends Component {
           <h1>
             <ScrollContainer comp={<span>Azure <br/>Seasons</span>}/>
           </h1>
-          <div className="topImg"/>
+          
+          <ScrollContainer comp={<div className="topImg"/>} fullscreen={true} cls = "float0"/>
       </div>
       );
     }

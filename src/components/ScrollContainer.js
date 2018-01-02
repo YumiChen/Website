@@ -11,10 +11,10 @@ class ScrollContainer extends Component{
         this.setState({scrollIn: !this.state.scrollIn});
     }
     render(){
-        const cls = this.props.cls || "";
+        const cls = this.props.cls || "", style = {width: "100vw", height: "100vh"};
         return (
             <Waypoint onEnter={this.scrollToggle} onLeave={this.scrollToggle}>
-            <div className={this.state.scrollIn?"scrollContainer scrollIn":"scrollContainer"}>
+            <div className={this.state.scrollIn?"scrollContainer scrollIn":"scrollContainer"} style={this.props.fullscreen?style:null}>
                 <div className={this.state.scrollIn?"container " + cls:"container"}>
                    {this.props.comp}
                 </div>
