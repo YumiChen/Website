@@ -11,12 +11,12 @@ var router = require('./routes.js');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require("webpack-hot-middleware");
 
-
+const port = 2000;
 
 // App setup
 var app = express();
-var server = app.listen((process.env.port || 2000), function(){
-    console.log('listening for requests on port 3000,');
+var server = app.listen((process.env.port || port), function(){
+    console.log('listening for requests on port ' + port);
 });
 
 // set hot-reload

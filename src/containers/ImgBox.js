@@ -6,15 +6,15 @@ import Slider from "react-slick";
 import changeToNull from "../actions/changeToNull";
 
 const imgs=[
-  "https://s6.postimg.org/bqh9924xt/p18.jpg",
-"https://s6.postimg.org/6dseuxh1d/p16.jpg",
-"https://s6.postimg.org/hd8k9f14x/愛_.jpg",
-"https://s6.postimg.org/gxxagef7l/satr_vs_the_Xmas.png",
-"https://s6.postimg.org/7skc8smf5/001.jpg",
-"https://s6.postimg.org/rfncc5g1t/GE1.jpg",
-"https://s6.postimg.org/i41af73i9/08.jpg",
-"https://s6.postimg.org/beuqz6i69/013_.jpg" ,
-"https://s6.postimg.org/g69vpkv0h/juan01.jpg"];
+  "https://s6.postimg.cc/bqh9924xt/p18.jpg",
+"https://s6.postimg.cc/6dseuxh1d/p16.jpg",
+"https://s6.postimg.cc/hd8k9f14x/愛_.jpg",
+"https://s6.postimg.cc/gxxagef7l/satr_vs_the_Xmas.png",
+"https://s6.postimg.cc/7skc8smf5/001.jpg",
+"https://s6.postimg.cc/rfncc5g1t/GE1.jpg",
+"https://s6.postimg.cc/i41af73i9/08.jpg",
+"https://s6.postimg.cc/beuqz6i69/013_.jpg" ,
+"https://s6.postimg.cc/g69vpkv0h/juan01.jpg"];
 
 
 class ImgBox extends Component{
