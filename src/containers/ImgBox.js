@@ -18,46 +18,56 @@ const imgs=[
 
 
 class ImgBox extends Component{
-    constructor(props){
-      super(props);
-    }
     componentWillmount(){
-   window.removeEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
+      window.removeEventListener("resize",
+          debounce(()=>{this.forceUpdate();},1000)
       );
     }
     componentDidMount(){
-   window.addEventListener("resize",
-      debounce(()=>{this.forceUpdate();},1000)
+      window.addEventListener("resize",
+          debounce(()=>{this.forceUpdate();},1000)
       );
+    }
+    componentDidUpdate(prevProps){
+      const that = this;
+      if(prevProps.img !== this.props.img){
+        if(that.slider){
+          setTimeout(()=>{
+            that.slider.slickGoTo(+that.props.img);
+          }, 200);
+        }
+      }
     }
     render(){
       const img = this.props.img;
       let works = imgs.map((img,index)=>{
-      return (<div key={index}><img
-        src = {img}
-        data-key = {index}
-        /></div>);
+      return (
+      <div key={index}>
+          <img
+            src = {img}
+            data-key = {index}
+          />
+        </div>
+      );
       }
     );
       let settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        initialSlide: img,
         slidesToShow: 1,
         slidesToScroll: 1
       };
       
-      return (img?
-          <div 
+      return (
+          this.props.img?<div 
             className="imgBox"
           >
           <div className="bg" onClick={this.props.changeToNull}/>
           <i className = "fa fa-times closeImgBox"
             onClick = {this.props.changeToNull}/>
-          <Slider {...settings}>
-          {works}
+          <Slider {...settings} ref={slider => (this.slider = slider)}>
+            {works}
           </Slider>
               </div>
         :null);
