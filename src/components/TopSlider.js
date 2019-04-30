@@ -33,7 +33,7 @@ class TopSlider extends Component {
       
       return (
         <div className="top" style={false?{height: this.state.height}:null}>
-          <ScrollContainer comp={<div className="topImg"><h1 className="float">Azure <br/>Seasons</h1></div>} fullscreen={true} cls = "float0"/>
+          <ScrollContainer comp={<div className="topImg"><h1>Azure <br/>Seasons</h1></div>} fullscreen={true} cls = "float0"/>
       </div>
       );
     }
