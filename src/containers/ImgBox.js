@@ -51,20 +51,22 @@ class ImgBox extends Component{
       };
       
       return (
-          this.props.img?<div 
+          typeof this.props.img === 'number'?<div 
             className="imgBox"
           >
-          <div className="bg" onClick={this.props.changeToNull}/>
-          <i className = "fa fa-times closeImgBox"
-            onClick = {this.props.changeToNull}/>
-          <Slider {...settings} ref={slider => (this.slider = slider)}>
-            {works}
-          </Slider>
-          <p className="mobile-slide-hint">
-          ← Swipe to view artworks →
-            <br/>左右滑動觀看
-          </p>
-              </div>
+            <div className="bg" onClick={this.props.changeToNull}/>
+            <i className = "fa fa-times closeImgBox"
+              onClick = {this.props.changeToNull}/>
+            <div className="slider-container">
+              <Slider {...settings} ref={slider => (this.slider = slider)}>
+                {works}
+              </Slider>
+              <p className="mobile-slide-hint">
+                Swipe to view artworks
+                <br/>左右滑動觀看
+              </p>
+            </div>
+          </div>
         :null);
     }
   }

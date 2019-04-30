@@ -10,11 +10,13 @@
     height: 100vh
     cursor: pointer
     background-color: rgba(0,0,0,.8)
-  & .slick-slider
-    transition: all .5s
+  & .slider-container
     left: 50%
     top: 50%
     transform: translate(-50%,-50%)
+  & .slick-slider
+    transition: all .5s
+    
     width: 80%
     height: 80vh
     & .slick-list, .slick-track
@@ -55,6 +57,22 @@
     transform: translate(-50%,-50%)
   & .mobile-slide-hint
     visibility: hidden
+    display: table
+    margin: auto
+    &::after
+      font-family: FontAwesome
+      content: "\f061"
+      position: absolute
+      right: 0
+      top: 50%
+      transform: translate(200%, -50%)
+    &::before
+      font-family: FontAwesome
+      content: "\f060"
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translate(-200%, -50%)
 
 @keyframes emerge
   0%
