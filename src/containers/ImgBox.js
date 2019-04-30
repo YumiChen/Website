@@ -46,7 +46,8 @@ class ImgBox extends Component{
         infinite: false,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        arrows: window.innerWidth > 480? true:false
       };
       
       return (
@@ -59,6 +60,10 @@ class ImgBox extends Component{
           <Slider {...settings} ref={slider => (this.slider = slider)}>
             {works}
           </Slider>
+          <p className="mobile-slide-hint">
+          ← Swipe to view artworks →
+            <br/>左右滑動觀看
+          </p>
               </div>
         :null);
     }

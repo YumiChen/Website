@@ -53,6 +53,8 @@
     left: 50%
     top: 50%
     transform: translate(-50%,-50%)
+  & .mobile-slide-hint
+    visibility: hidden
 
 @keyframes emerge
   0%
@@ -62,6 +64,16 @@
 
 +mq('phone-wide',max)
   .imgBox
+    & img
+      max-width: unset
+      max-height: unset
+      width: 90%
     & .slick-slider
-      height: 50vh
+      width: unset
       & .slick-prev, .slick-next
+    & .mobile-slide-hint
+      visibility: visible
+      color: white
+      font-family: 微軟正黑體
+      text-align: center
+      font-size: 0.7em
