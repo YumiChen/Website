@@ -8,24 +8,24 @@
     display: inline-block
     width: 10em
     height: 10em
-    background-image: url(https://s6.postimg.cc/iaqdzh37l/avatar.jpg)
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: 50% 50%
     border-radius: 10em
     border: solid 3px white
     margin-left: 4vw
+    overflow: hidden
+    & img
+      width: 100%
   & .info
     display: inline-block
     vertical-align: top
     margin-left: 2.5em
     color: white
-    & h3
+    & h2
       font-family: Lobster
       margin: 0
       font-size: 1.5em
     & p
       margin: 8px
+      font-size: .8em
 
 @media only screen and (max-width: 657px)
   .about

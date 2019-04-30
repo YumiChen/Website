@@ -14,14 +14,16 @@
       height: 20vw
       min-height: 120px
       margin: 1vw 0
-      background-size: cover
-      background-repeat: no-repeat
-      background-position: 50% 50%
-      transition: all 1s
-      background-size: 100%
-      &:hover
-        background-size: 110%
-        background-position: 50% 50%
+      overflow: hidden
+      & img
+        width: 100%
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%) translateZ(0)
+        transition: transform 1s
+        &:hover
+          transform: translate(-50%, -50%) translateZ(0) scale(1.2)
 
 .float0
   animation: float 1s 1 both
@@ -49,10 +51,6 @@
       & .piece
         width: 90vw
         height: 20vh
-        background-position: 50% 30%
-        &:hover
-          background-size: 110%
-          background-position: 50% 35%
   .float1
     animation: float 1s 1 both
   .float2

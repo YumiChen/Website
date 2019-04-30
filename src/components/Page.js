@@ -29,7 +29,7 @@ return (
       <About/>
       <Works/>
       <Contact/>
-      <footer>Copyright © 2017 Azure Seasons</footer>
+      <footer>Copyright © 2019 Azure Seasons</footer>
     </div>
   </div>
 </Provider>

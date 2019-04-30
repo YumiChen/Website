@@ -110,7 +110,7 @@ class Nav extends Component{
         }
       );
       return(
-          <div className="nav">
+          <nav className="nav">
           <canvas 
             style={{
               position: "absolute", 
@@ -120,7 +120,7 @@ class Nav extends Component{
             ref={(canvas)=>{canvas=this.canvas}}/>
           <i className="fa fa-times" aria-hidden="true" onClick={this.hideNav}></i>
           {nav}
-          </div>
+          </nav>
       );
     }
   }

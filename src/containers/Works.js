@@ -3,18 +3,9 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import changeImg from "../actions/changeImg";
 import ScrollContainer from "../components/ScrollContainer";
+import imgs from "../data/imgs";
 
-const imgs=[
-    "https://s6.postimg.cc/bqh9924xt/p18.jpg",
-  "https://s6.postimg.cc/6dseuxh1d/p16.jpg",
-  "https://s6.postimg.cc/hd8k9f14x/愛_.jpg",
-  "https://s6.postimg.cc/gxxagef7l/satr_vs_the_Xmas.png",
-  "https://s6.postimg.cc/7skc8smf5/001.jpg",
-  "https://s6.postimg.cc/rfncc5g1t/GE1.jpg",
-  "https://s6.postimg.cc/i41af73i9/08.jpg",
-  "https://s6.postimg.cc/beuqz6i69/013_.jpg" ,
-  "https://s6.postimg.cc/g69vpkv0h/juan01.jpg"], 
-      navs = ["Top","About","Works","Contact"];
+const navs = ["Top","About","Works","Contact"];
   
   const totalImgNum = imgs.length;
   let styles = imgs.map((img)=>{
@@ -31,10 +22,10 @@ const imgs=[
         comp={
           <div
           className="piece"
-         style={styles[index]}
-          onClick={props.changeImg}
-          data-key = {index}
-          />
+          onClick={props.changeImg.bind(null, index)}
+          >
+            <img src={img.url} alt="name"/>
+          </div>
         } cls={"float"+(index%3)}/>
       );
        }

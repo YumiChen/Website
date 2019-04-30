@@ -1,8 +1,7 @@
-const changeImg = (event)=>{
-    let img = event.target.getAttribute("data-key");
+const changeImg = (imgIndex)=>{
     return {
       type: "CHANGEIMG",
-      payload: img
+      payload: imgIndex
     };
   }
 
