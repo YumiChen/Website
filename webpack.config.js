@@ -14,7 +14,19 @@ module.exports = [{
   module: {
     loaders: [
       { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.sass$/, loader: 'style-loader!css-loader!sass-loader', exclude: /node_modules/ },
+      { test: /\.sass$/,  use: [
+        "style-loader",
+        "css-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            implementation: require("sass"),
+            sassOptions: {
+              fiber: false
+            },
+          },
+        },
+      ], exclude: /node_modules/ },
     ]
   },
   resolve: {
