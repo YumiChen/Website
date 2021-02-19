@@ -16,7 +16,7 @@ const port = 2000;
 // App setup
 var app = express();
 var server = app.listen((process.env.port || port), function(){
-    console.log('listening for requests on port ' + port);
+    console.log('listening for requests on http://localhost:' + port);
 });
 
 // set hot-reload
