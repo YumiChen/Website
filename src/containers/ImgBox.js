@@ -6,7 +6,21 @@ import Slider from "react-slick";
 import changeToNull from "../actions/changeToNull";
 import imgs from "../data/imgs";
 
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: window.innerWidth > 480? true:false
+};
 class ImgBox extends Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        sortedWorks: [...imgs]
+      }
+    }
     componentWillmount(){
       window.removeEventListener("resize",
           debounce(()=>{this.forceUpdate();},1000)
@@ -18,18 +32,15 @@ class ImgBox extends Component{
       );
     }
     componentDidUpdate(prevProps){
-      const that = this;
-      if(prevProps.img !== this.props.img){
-        if(that.slider){
-          setTimeout(()=>{
-            that.slider.slickGoTo(+that.props.img);
-          }, 200);
-        }
+      const { img } = this.props;
+      if(prevProps.img !== img){
+        this.setState({
+          sortedWorks: imgs.slice(img).concat(imgs.slice(0, img))
+        });
       }
     }
     render(){
-      const img = this.props.img;
-      let works = imgs.map((img,index)=>{
+      let works = this.state.sortedWorks.map((img,index)=>{
       return (
       <div key={index}>
           <img
@@ -41,14 +52,6 @@ class ImgBox extends Component{
       );
       }
     );
-      let settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: window.innerWidth > 480? true:false
-      };
       
       return (
           typeof this.props.img === 'number'?<div 
